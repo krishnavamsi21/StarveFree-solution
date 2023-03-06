@@ -23,4 +23,4 @@ When both the readers have completed their reading, they signal the wrt semaphor
 As in the order , next one is writer, it acquires the rwmutex, and doesn't allow the next readers to enter the critical section until writer completes its writing part, as it has arrived first.
 Writer can only start writing when the readers before have signaled the wrt semaphore.
 After completing writing part, the writer signals the rwmutex semaphore so that the next processes can start their execution.
-The next readers in the order start their reading process now by acquiring the rwmutex semaphore, mutex semaphore, updating reacnt, signal out both the semaphore and complete reading.
+The next readers in the order start their reading process now by acquiring the rwmutex semaphore, mutex semaphore, updating readcnt, signal out both the semaphore and complete reading.
