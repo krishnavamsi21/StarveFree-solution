@@ -1,0 +1,25 @@
+@Readers Process                        
+do{                                    
+wait(rwmutex);                          
+wait(mutex);                            
+readcnt++;                             
+if(readcnt==1) wait(wrt);               
+signal(mutex);                          
+signal(rwmutex);                        
+//reading                                                                    
+wait(mutex);
+readcnt--;
+if(readcnt==0) signal(wrt);
+signal(mutex);
+}
+while(true);
+
+@Writers Process
+do{
+wait(rwmutex);
+wait(wrt);
+//writing
+signal(wrt);
+signal(rwmutex);
+}
+while(true);
